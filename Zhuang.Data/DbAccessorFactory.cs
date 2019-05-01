@@ -9,6 +9,7 @@ using Zhuang.Data.DbProviders.SqlServer;
 using Zhuang.Data.EnvironmentVariable;
 using Zhuang.Data.Handlers;
 using Microsoft.Extensions.Configuration;
+using Zhuang.Data.DbProviders.MySql;
 
 namespace Zhuang.Data
 {
@@ -16,7 +17,8 @@ namespace Zhuang.Data
     {
         public static string DefaultDbName
         {
-            get {
+            get
+            {
 
                 string defaultDbName = MyConfiguration.Get().GetZhuangData(AppSettingsKey.DefaultDbName);
                 return defaultDbName == null ? "DefaultDb" : defaultDbName;
@@ -60,7 +62,7 @@ namespace Zhuang.Data
             if (string.IsNullOrEmpty(connectionString))
                 throw new Exception(string.Format("请检查配置文件的数据库连接配置，找不到名称为{0}的ConnectionString！", name));
 
-            
+
             return CreateDbAccessor(connectionString, providerName);
 
         }
@@ -91,6 +93,11 @@ namespace Zhuang.Data
                 || providerName.ToLower() == DbProviderName.SqlServer.ToString().ToLower())
             {
                 dba = new SqlServerAccessor(connectionString);
+            }
+            else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower()
+              || providerName == "MySql.Data.MySqlClient")
+            {
+                dba = new MySqlAccessor(connectionString);
             }
             else
             {
