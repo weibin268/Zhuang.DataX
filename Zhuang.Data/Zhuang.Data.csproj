@@ -4,6 +4,7 @@
     <AssemblyName>Zhuang.Data</AssemblyName>
     <PackageId>Zhuang.Data</PackageId>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

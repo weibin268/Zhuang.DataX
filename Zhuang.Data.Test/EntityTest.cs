@@ -39,5 +39,13 @@ namespace Zhuang.Data.Test
 
         }
 
+        [Fact]
+        public void Test()
+        {
+            DbAccessor dba = DbAccessor.Get();
+            var result = dba.QueryDictionaries("select * from sys_user");
+            Console.WriteLine(result.Count);
+        }
+
     }
 }

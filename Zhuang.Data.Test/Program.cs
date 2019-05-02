@@ -11,7 +11,6 @@
 //        public static void Main(string[] args)
 //        {
 
-
 //            var dba = DbAccessor.Get();
 
 //            SysProduct pro = new SysProduct();
@@ -20,7 +19,7 @@
 
 //            dba.Insert(pro);
 
-//            var pro2 = dba.SelectList<SysProduct>(new { ProductName="test1", ProductCode="code1" }).FirstOrDefault();
+//            var pro2 = dba.SelectList<SysProduct>(new { ProductName = "test1", ProductCode = "code1" }).FirstOrDefault();
 
 //            Console.Read();
 //        }
